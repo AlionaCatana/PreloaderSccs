@@ -133,6 +133,9 @@ body {
   width: 2.3333333333vh;
   height: 2.3333333333vh;
 }
+.preloader:hover div {
+  animation-play-state: paused;
+}
 
 @keyframes animate {
   0% {

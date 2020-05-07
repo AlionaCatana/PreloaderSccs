@@ -75,7 +75,15 @@ body{
           height: $size / 30;
       }
     }
+
+    &:hover div{
+        animation-play-state: paused;
+    }
+
 }
+
+
+
 
 @keyframes animate{
     0%{
