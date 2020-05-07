@@ -1,0 +1,10 @@
+@mixin flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin font{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2em;
+    font-weight: 500;
+}

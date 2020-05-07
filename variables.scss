@@ -1,0 +1,10 @@
+$bgColor: #131313;
+$mainColor: #0ca8ee;
+$borderColor: #313131; 
+$size: 70vh;
+$amount: 5;
+$smallCircle: 30%;
+$opacitColor: transparentize($mainColor, 0.9);
+
+
+$step: (100% - $smallCircle) / $amount;

@@ -1,0 +1,183 @@
+
+@import "variables";
+@import "mixins";
+
+
+
+body{
+    background-color: $bgColor;
+    height: $size * 2;
+    
+    
+    @include font;
+    @include flex-center;
+}
+
+
+.preloader{
+    width: $size;
+    height: $size;
+    position: absolute;
+    border-radius: 50%;
+
+    @include flex-center;
+
+    div{
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid #313131;
+    
+
+      @for $n from 1 to 11{
+      &:nth-child(#{$n}) {
+        width: $smallCircle + $step * $n;
+        height: $smallCircle + $step * $n;
+
+        animation: animate 4s infinite linear;
+        @if $n % 2 == 0 {
+            animation: animate-reverse 4s infinite linear;    
+        }
+        @if $n == 1 {
+            animation-duration: 1.5s;
+        }
+        @if $n == 2 {
+            animation-duration: 2s;
+        }
+        @if $n == 3 {
+            animation-duration: 2.5s;
+        }
+        @if $n == 4 {
+            animation-duration: 3s;
+        }
+        @if $n == 5 {
+            animation-duration: 3.5s;
+        }
+      }
+
+
+
+      &:nth-child(#{$n}):before{
+        background-color: lighten($mainColor, 4% * $n);
+        box-shadow: 0 0 7px lighten($mainColor, 4% * $n),
+                    0 0 15px lighten($mainColor, 4% * $n),
+                    0 0 25px lighten($mainColor, 4% * $n),
+                    0 0 35px lighten($mainColor, 4% * $n),
+                    0 0 0 4px lighten($opacitColor, 4% * $n);
+      } 
+      }
+      &:before{
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: - $size / 25 / 2;
+          border-radius: 50%;
+          width: $size / 30;
+          height: $size / 30;
+      }
+    }
+}
+
+@keyframes animate{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes animate-reverse{
+    0%{
+        transform: rotate(1turn);
+    }
+    100%{
+        transform: rotate(0);
+    }
+}
+
+.preloader h2 {
+    span{
+        animation: letters 4s ease-in-out infinite;
+
+        @for $h from 1 to 9{
+        &:nth-child(#{$h}){
+            animation-delay: 0.5s * $h;
+        }
+        }
+    }
+}
+
+@keyframes letters {
+    0%{
+        color: #333;
+    }
+    100% {
+        color: #fff;
+        filter: blur(0.03em);
+        text-shadow:    0 0 10px $mainColor,
+                        0 0 20px $mainColor,
+                        0 0 30px $mainColor,
+                        0 0 80px $mainColor;
+    }
+}
+
+.line{
+    width: 100%;
+    height: $size / 4;
+
+    position: absolute;
+    bottom: -$size/ 3;
+
+    &:after{
+        content: "";
+        position: absolute;
+        display: block;
+        top: $size / 4 / 2;
+        left: 33.3%;
+        width: 33.3%;
+        height: 0.1em;
+        background-color: $mainColor;
+        box-shadow: 0 0 10px $mainColor,
+                    0 0 20px $mainColor;
+
+        transform-origin: right;
+        transform: scaleX(0);
+        animation: line-animate 8s infinite alternate;
+    }
+}
+
+@keyframes line-animate {
+
+    
+    0%{
+        transform: translateX(0) scaleX(1);
+        transform-origin: right;
+        left: 33.3%;
+        right: auto;
+    }
+
+
+    45%{
+        transform: translateX(0) scaleX(1);
+        transform-origin: left;
+        left: auto;
+        right: 33.3%;
+    }
+
+
+    100%{
+        transform: translateX(0) scaleX(0);
+        transform-origin: left;
+        left: auto;
+        right: 33.3%;
+    }
+
+
+}
+
+@media only screen and (device-width: 800px) 
+and (orientation: landscape){
+    $size: 70vw;
+}
+
+ 
