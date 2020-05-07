@@ -6,7 +6,7 @@
 
 body{
     background-color: $bgColor;
-    height: $size * 2;
+    height: $size + 30vh;
     
     
     @include font;
@@ -134,7 +134,7 @@ body{
     height: $size / 4;
 
     position: absolute;
-    bottom: -$size/ 3;
+    bottom: 0;
 
     &:after{
         content: "";
